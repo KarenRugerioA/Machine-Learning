@@ -8,6 +8,8 @@
 
 from fileinput import filename
 import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
 
 filename = "./auto-mpg.data"
 
@@ -62,22 +64,15 @@ def get_coefficients(x_value, y_value):
 
 def get_mse(actual_value, predicted_value)->float:
 
-    # error_total = 0.0
-    # elements = len(actual_value)
-    # for i in range(0, elements):
-    #     difference = actual_value[i] - predicted_value[i]
-    #     squared_difference = pow(difference, 2)
-    #     error_total += squared_difference
+    error_total = 0.0
+    elements = len(actual_value)
+    for i in range(0, elements):
+        difference = actual_value[i] - predicted_value[i]
+        squared_difference = pow(difference, 2)
+        error_total += squared_difference
     
-    # mse = error_total / elements
-
-    summation = 0  #variable to store the summation of differences
-    n = len(actual_value) #finding total number of items in list
-    for i in range (0,n):  #looping through each element of the list
-        difference = actual_value[i] - predicted_value[i]  #finding the difference between observed and predicted value
-        squared_difference = difference**2  #taking square of the differene 
-        summation = summation + squared_difference  #taking a sum of all the differences
-    mse = summation/n 
+    mse = error_total / elements
+    
     return mse
 
 def predict_horsepower(x_value, w0, w1)->None:
@@ -109,8 +104,10 @@ def linear_regression(df):
     """
     predict_horsepower(df["cylinders"].astype(float), w0, w1)
     mse = get_mse(df["horsepower"], df["PredictedHorsepower"])
-    print("Mean Square Error: %f" % mse)
+    #print("Mean Square Error: %f" % mse)
 
+    print (np.polyfit(df["cylinders"].astype(float), df["horsepower"].astype(float), deg=2))
+    plt.plot(df["cylinders"].astype(float),df["horsepower"].astype(float), 'yo', df["PredictedHorsepower"], '--k' )
 
 if __name__ == '__main__':
 
