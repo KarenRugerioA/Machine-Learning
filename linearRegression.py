@@ -8,8 +8,7 @@
 
 from fileinput import filename
 import pandas as pd
-import matplotlib.pyplot as plt
-import numpy as np
+
 
 filename = "./auto-mpg.data"
 
@@ -106,8 +105,8 @@ def linear_regression(df):
     mse = get_mse(df["horsepower"], df["PredictedHorsepower"])
     #print("Mean Square Error: %f" % mse)
 
-    print (np.polyfit(df["cylinders"].astype(float), df["horsepower"].astype(float), deg=2))
-    plt.plot(df["cylinders"].astype(float),df["horsepower"].astype(float), 'yo', df["PredictedHorsepower"], '--k' )
+    #print (np.polyfit(df["cylinders"].astype(float), df["horsepower"].astype(float), deg=2))
+    #plt.plot(df["cylinders"].astype(float),df["horsepower"].astype(float), 'yo', df["PredictedHorsepower"], '--k' )
 
 if __name__ == '__main__':
 
