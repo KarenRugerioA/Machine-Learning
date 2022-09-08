@@ -1,14 +1,19 @@
 # Author: Karen Rugerio
 # Linear regression using scikit learn
-# Dataset: Correlation between years of experience and salary. Source: https://github.com/mohit-baliyan/references/blob/master/salary_data.csv
-
-from cgitb import text
+"""
+Dataset:
+Swedish Committee on Analysis of Risk Premium in Motor Insurance
+http://college.hmco.com/mathematics/brase/understandable_statistics/7e/students/datasets/
+       slr/frames/frame.htmlownlee/Datasets/blob/master/auto-insurance.csv
+x = number of claims.
+y = total payment for all the claims in thousands Swedish Kronor.
+"""
 import sys
 import argparse
-from typing import Tuple
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+from typing import Tuple
 from sklearn import linear_model
 
 def plot_results(x: np.ndarray, y: np.ndarray, y_prediction: np.ndarray, t_prediction: Tuple)->None:
@@ -16,8 +21,8 @@ def plot_results(x: np.ndarray, y: np.ndarray, y_prediction: np.ndarray, t_predi
     Function to scatter the samples and the returned function
     to be ploted
     """
-    # t_prediction[0] is the given years of experience
-    # t_prediction[1] is the predicted salary at the given years of experience
+    # t_prediction[0] is the number of claims
+    # t_prediction[1] is the total payment for all the claims in thousands
     new_x = np.append(x, t_prediction[0])
     new_y_prediction = np.append(y_prediction, t_prediction[1])
 
@@ -31,25 +36,20 @@ def plot_results(x: np.ndarray, y: np.ndarray, y_prediction: np.ndarray, t_predi
 
 if __name__ == '__main__':
     # Argument parsing
-    parser = argparse.ArgumentParser(description='Linear Regression using Scikit learn', usage='python3 linearRegressionSci.py -p [# Years of experience to predict Salary of]')
-    parser.add_argument('-p', '--prediction', type=float, help='Years of experience to predict Salary of', required=True)
+    parser = argparse.ArgumentParser(description='Linear Regression using Scikit learn', usage='python3 linearRegressionSci.py -p [# numbers of claims to predict total payment of]')
+    parser.add_argument('-p', '--prediction', type=float, help='Numbers of claims to predict total payment of', required=True)
     args = parser.parse_args() #Saves parser arguments
     
     # Validate the value to predict is > than 0
     if (args.prediction <= 0):
-        sys.exit('Cannot predict 0 or negative years of experience')
+        sys.exit('Cannot predict 0 or negative number of claims')
 
     # Read the dataset
-    df = pd.read_csv('salary_data.csv')
+    df = pd.read_csv('auto-insurance.csv')
     # Calculate number of elements present on the data frame
     elements = len(df)
-    x = df.YearsExperience.values
-    y = df.Salary.values
-
-    # Estimated coefficients for the linear regression problem
-    # this is a 1D array of length n_features
-    x = x.reshape(elements, 1)
-    y = y.reshape(elements, 1)
+    x = df.values[:, :-1]
+    y = df.values[:, -1]
 
     # Apply the linear regression by Sklearn library
     regr = linear_model.LinearRegression()
@@ -60,13 +60,12 @@ if __name__ == '__main__':
     y_prediction = regr.predict(x)
     print(f"Predicted values:\n {y_prediction}")
 
-    # Predict Salary at a given value
+    # Predict total payment for all the claims in thousands
     predicted_at_value = regr.predict([[args.prediction]])
-    print(f"Prediction at {args.prediction}: {predicted_at_value}\n")
+    print(f"Prediction for {args.prediction} claims = {predicted_at_value[0]} thousands Swedish Kronors\n")
 
-    # Create a tuple with the given years of experience (x) and the predicted
-    # salary for that given value (y)
+    # Create a tuple with the number of claims(x) and the predicted
+    # payment for the claims (y)
     t_prediction = (args.prediction, predicted_at_value)
 
     plot_results(x,y, y_prediction, t_prediction)
-
