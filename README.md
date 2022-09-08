@@ -31,8 +31,9 @@ Bias and Variance tradeoff:
 > Swedish Committee on Analysis of Risk Premium in Motor Insurance
 http://college.hmco.com/mathematics/brase/understandable_statistics/7e/students/datasets/
        slr/frames/frame.htmlownlee/Datasets/blob/master/auto-insurance.csv
+
 x = number of claims.
-y = total payment for all the claims in thousands.
+y = total payment for all the claims in thousands Swedish Kronor (Swedish currency).
 
 ## Running the model
 
