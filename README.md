@@ -1,5 +1,15 @@
 # Model Analysis
 
+## Dependencies 
+
+```console
+pip3 install pandas
+pip3 install -U scikit-learn
+pip3 install mlxtend
+```
+
+## Analysis
+
 High bias is a sign of the model missing important relations between features and target outputs.
 This is related to using a simple model instead of a more complex one.
         - High training error
@@ -16,3 +26,15 @@ High Bias and High Variance = Predictions are inconsistent and innacurate on ave
 Low Bias and Low Variance = The ideal model. Difficult to achieve.
 Low Bias and High Variance = Overfitting. Predictions are mostly inconsistent but accurate on average.
                              This happens when the model is too complex with a large number of parameters. 
+
+## Running the model
+
+```console
+python3 modelAnalysis.py
+Y predictions: [ 49.49886882  67.58483121  70.59915828  43.47021469 396.14648132
+ 145.95733491 182.12925969  61.55617708 206.24387621 145.95733491
+ 133.90002665  61.55617708  82.65646654]
+MSE: 1671.7795956092089
+Bias: 1384.4849490557654
+Variance: 287.2946465534371
+```
