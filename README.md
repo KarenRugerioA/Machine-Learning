@@ -20,7 +20,7 @@ Higher variance is an error from sensitivity to fluctuationsin the training set.
 - High test error
 
 Bias and Variance tradeoff:
-1. High Bias and Low Variance = Underfitting. Predictions are mostly consistent but innacurate on average.
+1. High Bias and Low Variance = Underfitting. Predictions are mostly consistent but inaccurate on average.
                              It happens when the model is too simple with very few parameters. 
 2. High Bias and High Variance = Predictions are inconsistent and innacurate on average
 3. Low Bias and Low Variance = The ideal model. Difficult to achieve.
