@@ -33,6 +33,7 @@ http://college.hmco.com/mathematics/brase/understandable_statistics/7e/students/
        slr/frames/frame.htmlownlee/Datasets/blob/master/auto-insurance.csv
 
 x = number of claims.
+
 y = total payment for all the claims in thousands Swedish Kronor (Swedish currency).
 
 ## Running the model
