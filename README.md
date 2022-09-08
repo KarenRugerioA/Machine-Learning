@@ -12,12 +12,12 @@ pip3 install mlxtend
 
 High bias is a sign of the model missing important relations between features and target outputs.
 This is related to using a simple model instead of a more complex one.
-        - High training error
-        - Test error is extremely similar as training error
+- High training error
+- Test error is extremely similar as training error
 
 Higher variance is an error from sensitivity to fluctuationsin the training set.
-        - Low Training error
-        - High test error
+- Low Training error
+- High test error
 
 Bias and Variance tradeoff:
 1. High Bias and Low Variance = Underfitting. Predictions are mostly consistent but innacurate on average.
