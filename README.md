@@ -30,7 +30,7 @@ Low Bias and High Variance = Overfitting. Predictions are mostly inconsistent bu
 ## Running the model
 
 ```console
-python3 modelAnalysis.py
+user@system:~% python3 modelAnalysis.py
 Y predictions: [ 49.49886882  67.58483121  70.59915828  43.47021469 396.14648132
  145.95733491 182.12925969  61.55617708 206.24387621 145.95733491
  133.90002665  61.55617708  82.65646654]
