@@ -26,6 +26,13 @@ Bias and Variance tradeoff:
 3. Low Bias and Low Variance = The ideal model. Difficult to achieve.
 4. Low Bias and High Variance = Overfitting. Predictions are mostly inconsistent but accurate on average.
                              This happens when the model is too complex with a large number of parameters. 
+                             
+## Dataset
+> Swedish Committee on Analysis of Risk Premium in Motor Insurance
+http://college.hmco.com/mathematics/brase/understandable_statistics/7e/students/datasets/
+       slr/frames/frame.htmlownlee/Datasets/blob/master/auto-insurance.csv
+x = number of claims.
+y = total payment for all the claims in thousands.
 
 ## Running the model
 
