@@ -51,5 +51,5 @@ Variance: 287.2946465534371
 ## Analysis
 
 In this scenario, the Bias is way larger than the Variance: This is an indicator of an **underfitting** model.
-Moreover, both, the Bias and the Variance are high. Which could lead to some inconsistent and some innacurate
+Moreover, both, the Bias and the Variance are high. Which could lead to some inconsistent and some inaccurate
 predictions. To improve the results it would be useful to have more data and/or more parameters.
