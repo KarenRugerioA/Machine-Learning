@@ -6,8 +6,7 @@
 """
 Dataset:
 Swedish Committee on Analysis of Risk Premium in Motor Insurance
-http://college.hmco.com/mathematics/brase/understandable_statistics/7e/students/datasets/
-       slr/frames/frame.htmlownlee/Datasets/blob/master/auto-insurance.csv
+college.cengage.com/mathematics/brase/understandable_statistics/7e/students/datasets/slr/frames/slr06.html
 x = number of claims.
 y = total payment for all the claims in thousands Swedish Kronor.
 """
@@ -29,12 +28,12 @@ if __name__ == '__main__':
 
     # Define model
     regr = LinearRegression()
+    regr.fit(x, y)
     
     # Calculate bias and variance decompression, using loss as 'mse' and 5000 rounds
     mse, bias, variance_r = bias_variance_decomp(regr, x_train, y_train, x_test, y_test, loss='mse', num_rounds=5000, random_seed=1)
 
     y_pred=regr.predict(x_test)
-    print(f"Y predictions: {y_pred}")
 
     # Results
     print(f"MSE: {mse}")
@@ -56,7 +55,7 @@ if __name__ == '__main__':
 
     High Bias and Low Variance = Underfitting. Predictions are mostly consistent but innacurate on average.
                                 It happens when the model is too simple with very few parameters. 
-    High Bias and High Variance = Predictions are inconsistent and innacurate on average
+    High Bias and High Variance = Predictions are inconsistent and inaccurate on average
     Low Bias and Low Variance = The ideal model. Difficult to achieve.
     Low Bias and High Variance = Overfitting. Predictions are mostly inconsistent but accurate on average.
                                 This happens when the model is too complex with a large number of parameters.
