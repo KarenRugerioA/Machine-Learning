@@ -22,7 +22,7 @@ y = total payment for all the claims in thousands Swedish Kronor (Swedish curren
 **The flag -p is needed to supply the x (number of claims) value for the y (total payment for all the claims in thousands Swedish Kronor [Swedish currency]) to be calculated**
  
 ```console
-user@system:~% python3 linearRegressionSci.py -p 45
+user@system:~% python3 linearRegressionSci.py -p 20
 
 ```
 
