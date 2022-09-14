@@ -26,6 +26,6 @@ user@system:~% python3 linearRegressionSci.py -p 20
 
 ```
 
-### Result
+### Results
 
 ![RESULT](./results.png)
