@@ -96,7 +96,7 @@ if __name__ == '__main__':
     pred_yR = lasso_model.predict(x_test)
     score_CV = cross_val_score(regr, x, y, cv=3)
     print("Accuracy of %0.2f after applying Lasso with a standard deviation of %0.2f" % (score_CV.mean(), score_CV.std()))
-    print(f"Prediction for {args.prediction} ensurance payment = {predicted_at_value[0]} Swedish Kronor\n")
+    print(f"Prediction for {args.prediction} claims = {predicted_at_value[0]} Swedish Kronor\n")
 
     # Plotting the learning curve: Training score vs Cross-validation score.
     plt.subplot(1, 2, 1)
