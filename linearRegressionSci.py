@@ -15,8 +15,10 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from typing import Tuple
 from sklearn import linear_model
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.metrics import r2_score
+from sklearn import svm
+from sklearn.model_selection import learning_curve
 
 if __name__ == '__main__':
 
@@ -42,6 +44,8 @@ if __name__ == '__main__':
     """
     x_train, x_test, y_train, y_test = train_test_split(x, y,test_size=0.20, random_state=1)
 
+    #separar train for validation(cross validation)
+
     # Apply the linear regression by Sklearn library
     regr = linear_model.LinearRegression()
 
@@ -54,7 +58,7 @@ if __name__ == '__main__':
 
     # Accuracy calculation of the train based on MSE
     score = r2_score(y_train, y_prediction)
-    print(f"The score (based on train MSE) is: {score}\n")
+    print(f"The r2 using train set is: {score}\n")
 
     # Predict salary in USD for years of experience (INPUT)
     predicted_at_value = regr.predict([[args.prediction]])
@@ -65,7 +69,11 @@ if __name__ == '__main__':
 
     # Accuracy calculation of the test based on MSE
     score = r2_score(y_test, y_predTest)
-    print(f"The score (based on test MSE) is: {score}\n")
+    print(f"The r2 using test set is: {score}\n")
+
+    # Cross Validation
+    score_CV = cross_val_score(regr, x, y, cv=2)
+    print("Accuracy of %0.2f with a standard deviation of %0.2f" % (score_CV.mean(), score_CV.std()))
 
     # Create a tuple with the years of experience(x) and the predicted salary (y)
     t_prediction = (args.prediction, predicted_at_value)
@@ -74,13 +82,40 @@ if __name__ == '__main__':
     new_x = np.append(x_test, t_prediction[0])
     new_y_prediction = np.append(y_predTest, t_prediction[1])
 
+    # A learning curve shows the validation and training score of an estimator for varying numbers of training samples
+    train_sizes, train_scores, valid_scores = learning_curve(regr, x, y, cv=3)
+
+    train_mean = np.mean(train_scores, axis=1)
+    train_std = np.std(train_scores, axis=1)
+
+    test_mean = np.mean(valid_scores, axis=1)
+    test_std = np.std(valid_scores, axis=1)
+
+    lasso_model = linear_model.Lasso()
+    lasso_model.fit(x_train, y_train)
+    pred_yR = lasso_model.predict(x_test)
+    score_CV = cross_val_score(regr, x, y, cv=3)
+    print("Accuracy of %0.2f after applying Lasso with a standard deviation of %0.2f" % (score_CV.mean(), score_CV.std()))
+
+    plt.subplot(1, 2, 1)
+    plt.grid()
+    plt.plot(train_sizes, train_mean, 'o-', color="red",  label="Training score")
+    plt.plot(train_sizes, test_mean,"o-",color="green", label="Cross-validation score")
+    plt.fill_between(train_sizes, train_mean - train_std, train_mean + train_std, alpha=0.2, color="red")
+    plt.fill_between(train_sizes, test_mean - test_std, test_mean + test_std, alpha=0.2,color="green")
+    plt.title("Learning Curve")
+    plt.xlabel("Training Set Size"), plt.ylabel("Accuracy Score")
+    plt.legend(loc="best")
+
+    plt.subplot(1, 2, 2)
+    plt.grid()
     plt.scatter(x_train, y_train, color='green', alpha=0.4)
     plt.scatter(x_test, y_predTest, color = 'black', alpha=0.7)
     plt.scatter(t_prediction[0], t_prediction[1], color='#050df7')
     plt.annotate('Predicted value', xy=t_prediction, horizontalalignment='right', verticalalignment='top')
-    plt.title("xtest-ypredtest")
+    plt.title("Linear Regression")
     plt.plot(new_x, new_y_prediction, color='#F5451F')
     plt.legend(['TRAIN SET', 'TEST SET','PREDICTED VALUE', 'FITTED FUNCTION'])
     plt.show()
 
-    #plot_results(Xtrain, ytrain, y_prediction, t_prediction)
+    
