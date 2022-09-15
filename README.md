@@ -30,7 +30,7 @@ user@system:~% python3 linearRegressionSci.py -p 20
 
 ### Results
 
-[Report](./ModelAnalysis-LinearRegression.pdf)
+Report and detailed analysis [here](./ModelAnalysis-LinearRegression.pdf)
 
 ![RESULT](./results.png)
 
