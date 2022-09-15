@@ -1,3 +1,4 @@
 # Machine Learning 
 
-Programación de regresión lineal sin usar ninguna biblioteca o framework de machine learning, ni de estadística avanzada y prueba con un set de datos para realizar predicciones. 
+Implementación de un algoritmo de machine learning sin la utilización de bibliotecas o frameworks que los realice automaticamente.
+Se utilizó un set de datos donde se relacionan los años de experiencia con el salario percibido
