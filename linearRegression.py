@@ -1,4 +1,4 @@
-# Linear regeression using gradient descent optimization
+# Gradient descent optimization
 # Author Karen Rugerio
 # Dataset: Correlation between years of experience and salary 
 
