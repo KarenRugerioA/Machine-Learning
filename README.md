@@ -20,6 +20,8 @@ y = total payment for all the claims in thousands Swedish Kronor (Swedish curren
 ## Running the model
 
 **The flag -p is needed to supply the x (number of claims) value for the y (total payment for all the claims in thousands Swedish Kronor [Swedish currency]) to be calculated**
+
+#### Example to predict the payment of 20 claims
  
 ```console
 user@system:~% python3 linearRegressionSci.py -p 20
@@ -29,3 +31,5 @@ user@system:~% python3 linearRegressionSci.py -p 20
 ### Results
 
 ![RESULT](./results.png)
+
+[Report](./ModelAnalysis-LinearRegression.pdf)

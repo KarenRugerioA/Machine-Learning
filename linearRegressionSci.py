@@ -90,7 +90,7 @@ if __name__ == '__main__':
     test_mean = np.mean(valid_scores, axis=1)
     test_std = np.std(valid_scores, axis=1)
 
-    # Applied Lasso regression for standardadization purposes
+    # Applied Lasso regression for standardization purposes
     lasso_model = linear_model.Lasso()
     lasso_model.fit(x_train, y_train)
     pred_yR = lasso_model.predict(x_test)
